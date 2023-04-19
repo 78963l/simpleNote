@@ -2,9 +2,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle.js";
 import Header from "./components/Header.js";
-import SearchBar from "./components/SearchBar";
-import NoteList from "./components/NoteList";
 import InitPage from "./pages/InitPage";
+import CreateNote from "./components/CreateNote";
 
 function App() {
   return (
@@ -15,6 +14,7 @@ function App() {
       <BrowserRouter>
       <Routes>
       <Route exact path="/" element={<InitPage />}></Route>
+      <Route exact path="/create" element={<CreateNote />}></Route>
       </Routes>
       </BrowserRouter>
       </div>

@@ -1,5 +1,9 @@
 const { app, BrowserWindow } = require('electron') 
 const path = require('path') 
+
+// set env
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
+
 function createWindow () { 
   const win = new BrowserWindow({ 
     width: 400, 
@@ -17,3 +21,4 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () { 
   if (process.platform !== 'darwin') app.quit() 
 })
+

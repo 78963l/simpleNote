@@ -17,7 +17,7 @@ function Header(props){
     return(
         <div>
             <header>
-                <TitleTxt>{props.title}</TitleTxt>
+                <TitleTxt href="/"><a href="/">{props.title}</a></TitleTxt>
                 <SubTxt>{props.sub}</SubTxt>
             </header>
         </div>
