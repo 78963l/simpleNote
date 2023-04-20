@@ -11,32 +11,29 @@ const Container = styled.div`
   display: flex;
   margin: 0 auto;
 
-  .Title input {
+  .title{
+    width: 100%;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: inline;    
   }
-`;
 
-const Title = styled.input`
-  width: 100%;
-  height: 25px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: inline;
-`;
+  .content{
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: inline;
+  }
 
-const Content = styled.textarea`
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: inline;
-`;
-
-const BottomBtn = styled.p`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+  .bottomBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export default function EditPage() {
@@ -144,16 +141,16 @@ export default function EditPage() {
   return (
     <Container>
       <form onSubmit={onSubmit}>
-        <Title type="text" placeholder="title" ref={titleRef}></Title>
-        <Content placeholder="content" ref={contentRef}></Content>
-        <BottomBtn>
+        <input className="title" type="text" placeholder="title" ref={titleRef}></input>
+        <textarea className="content" placeholder="content" ref={contentRef}></textarea>
+        <p className="bottomBtn">
           {state === "edit" ? (
             <input type="button" value={"del"} onClick={del}></input>
           ) : (
             ""
           )}
           <button>{state}</button>
-        </BottomBtn>
+        </p>
       </form>
     </Container>
   );
