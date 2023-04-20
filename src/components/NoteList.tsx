@@ -94,7 +94,7 @@ export default function NoteContent() {
     const noteOnClick = (note : Notes) => {
       if(scrollRef.current){
         if(scrollY === scrollRef.current.scrollTop){
-          navigate(`/create`, { state: { noteInfo: note } })
+          navigate(`/edit`, { state: { noteInfo: note } })
         }
       } 
     }

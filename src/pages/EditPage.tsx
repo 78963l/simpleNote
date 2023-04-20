@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 
-import ToastMsg from "./ToastMsg";
+import ToastMsg from './../components/ToastMsg';
 
 
 const Container = styled.div`
@@ -39,7 +39,7 @@ const BottomBtn = styled.p`
   justify-content: space-between;
 `;
 
-export default function CreateNote() {
+export default function EditPage() {
   const navigate = useNavigate();
   const location = useLocation();
 

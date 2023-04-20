@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from "../components/SearchBar";
 import NoteList from "../components/NoteList";
 
-function initPage(){
+export default function InitPage(){
     const navigate = useNavigate();
 
     return(
@@ -11,10 +11,8 @@ function initPage(){
             <SearchBar />
             <div>
                 <NoteList />
-                <button onClick={() => navigate('/create')}>Create</button>
+                <button onClick={() => navigate('/edit')}>Create</button>
             </div>
         </div>
     )
 }
-
-export default initPage;
