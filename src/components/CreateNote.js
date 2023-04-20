@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 
@@ -17,7 +17,7 @@ const Content = styled.textarea`
   margin: 10px;
 `;
 
-function CreateNote() {
+export default function CreateNote() {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,17 +28,16 @@ function CreateNote() {
   const [state, setState] = useState("");
   
   useEffect(() => {
-
-    let noteTitle = null;
-    let noteContent = null;
     if (location.state) {
-      noteTitle = location.state.title;
-      noteContent = location.state.content;
-      titleRef.current.value = noteTitle;
-      contentRef.current.value = noteContent;
-      setState("edit");
+      setState("edit")
+      const noteInfo = location.state.noteInfo;
+      titleRef.current.value = noteInfo.title;
+      contentRef.current.value = noteInfo.content;
+      
     } else {
-      setState("create");
+      setState("create")
+      titleRef.current.value = '';
+      contentRef.current.value = '';
     }
   }, []);
 
@@ -71,6 +70,7 @@ function CreateNote() {
       }).then((res) => {
         if (res.ok) {
           alert("note create complete!");
+          navigate('/')
         }
       });
     } else if (state === "edit") {
@@ -101,5 +101,3 @@ function CreateNote() {
     </div>
   );
 }
-
-export default CreateNote;

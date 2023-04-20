@@ -9,8 +9,13 @@
 - typescript
 - react
 
+### install
+- npm install --save --legacy-peer-deps
+- npm install -g json-server
+
 ### execute
-- "yarn start"
+- json-server --watch ./src/db/data.json --port 3001
+- yarn start
 
 ### bulid
-- "yarn run bulid"
+- yarn run bulid

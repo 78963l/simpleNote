@@ -13,7 +13,7 @@ const SubTxt = styled.h2`
     margin-bottom: 12px;
 `
 
-function Header(props){
+export default function Header(props){
     return(
         <div>
             <header>
@@ -23,5 +23,3 @@ function Header(props){
         </div>
     )
 }
-
-export default Header;

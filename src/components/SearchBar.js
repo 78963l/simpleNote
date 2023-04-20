@@ -12,7 +12,7 @@ const SearchSel = styled.select`
     height: 25px;
 `
 
-function SearchBar(){
+export default function SearchBar(){
     const selectList = ["최근생성순", "최근수정순"]
     return(
         <div>
@@ -25,5 +25,3 @@ function SearchBar(){
         </div>
     )
 }
-
-export default SearchBar;
