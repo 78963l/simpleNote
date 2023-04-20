@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function ToastMsg(state, msg){
+export default function ToastMsg(state:string, msg:string){
     console.log("ToastMsg")
     if (state === 'info'){
         toast.info(msg, {

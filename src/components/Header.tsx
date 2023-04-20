@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import txtSize from "../styles/txtSize";
+import {useState} from "react";
 
 const TitleTxt = styled.h1`
     font-weight: 700;
@@ -13,12 +14,21 @@ const SubTxt = styled.h2`
     margin-bottom: 12px;
 `
 
-export default function Header(props){
+interface Iprops {
+    props : ITitle;
+}
+
+export interface ITitle{
+    title : string;
+    sub : string;
+}
+
+export default function Header({props : p} : Iprops){
     return(
         <div>
             <header>
-                <TitleTxt href="/"><a href="/">{props.title}</a></TitleTxt>
-                <SubTxt>{props.sub}</SubTxt>
+                <TitleTxt><a href="/">{p.title}</a></TitleTxt>
+                <SubTxt><a>{p.sub}</a></SubTxt>
             </header>
         </div>
     )

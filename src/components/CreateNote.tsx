@@ -43,12 +43,15 @@ export default function CreateNote() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const titleRef = useRef(null);
-  const contentRef = useRef(null);
+  const titleRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
 
   const [state, setState] = useState("");
 
   useEffect(() => {
+    if (!(titleRef.current && contentRef.current)){
+      return
+    }
     if (location.state) {
       setState("edit");
       const noteInfo = location.state.noteInfo;
@@ -62,8 +65,11 @@ export default function CreateNote() {
     titleRef.current.focus();
   }, []);
 
-  function onSubmit(e) {
+  function onSubmit(e : React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!(titleRef.current && contentRef.current)){
+      return
+    }
 
     const curTitle = titleRef.current.value;
     const curContent = contentRef.current.value;
