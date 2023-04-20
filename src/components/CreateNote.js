@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import useFetch from "../hooks/useFetch";
+
+import ToastMsg from "./ToastMsg";
+
 
 const Container = styled.div`
   width: 250px;
@@ -61,21 +63,21 @@ export default function CreateNote() {
   }, []);
 
   function onSubmit(e) {
+    e.preventDefault();
+
     const curTitle = titleRef.current.value;
     const curContent = contentRef.current.value;
 
     if (!curTitle) {
-      alert("title을 작성해주세요.");
+      ToastMsg("warnning", "제목을 입력해주세요.")
       titleRef.current.focus();
       return false;
     }
     if (!curContent) {
-      alert("content를 작성해주세요.");
+      ToastMsg("warnning", "내용을 입력해주세요.")
       contentRef.current.focus();
       return false;
     }
-
-    e.preventDefault();
 
     if (state === "create") {
       fetch(`http://localhost:3001/notes`, {
@@ -89,7 +91,7 @@ export default function CreateNote() {
         }),
       }).then((res) => {
         if (res.ok) {
-          alert("note create complete!");
+          ToastMsg("info", "노트가 작성되었습니다.")
           navigate("/");
         }
       });
@@ -106,24 +108,25 @@ export default function CreateNote() {
         }),
       }).then((res) => {
         if (res.ok) {
+          ToastMsg("info", "내용이 수정되었습니다.")
           navigate("/");
         }
       });
-    } else{
-      return
+    } else {
+      return;
     }
   }
 
-  function del(){
-    console.log("del!!")
+  function del() {
+    console.log("del!!");
     fetch(`http://localhost:3001/notes/${location.state.noteInfo.id}`, {
       method: "DELETE",
-    }).then(res => {
-      if(res.ok){
-        alert("삭제되었습니다.");
-        navigate('/');
+    }).then((res) => {
+      if (res.ok) {
+        ToastMsg("info", "노트를 삭제하였습니다.")
+        navigate("/");
       }
-    })
+    });
   }
 
   return (
@@ -132,7 +135,11 @@ export default function CreateNote() {
         <Title type="text" placeholder="title" ref={titleRef}></Title>
         <Content placeholder="content" ref={contentRef}></Content>
         <BottomBtn>
-          {state === "edit" ? <input type="button" value={"del"} onClick={del}></input> : ""}
+          {state === "edit" ? (
+            <input type="button" value={"del"} onClick={del}></input>
+          ) : (
+            ""
+          )}
           <button>{state}</button>
         </BottomBtn>
       </form>

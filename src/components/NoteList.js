@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Notecontainer = styled.div`
     height: 350px;
-    overflow: scroll;
+    overflow-y: scroll;
+
+::-webkit-scrollbar {
+    display: none;
+}
 `;
 
 const NoteBox = styled.div`
