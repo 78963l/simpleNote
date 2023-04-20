@@ -6,9 +6,10 @@ import { useRef, useState } from 'react';
 const Notecontainer = styled.div`
     height: 350px;
     overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
 
 ::-webkit-scrollbar {
-    display: none;
+    display: none; /* Chrome, Safari, Opera*/
 }
 `
 
@@ -40,28 +41,29 @@ export default function NoteContent() {
   const scrollRef = useRef(null);
   const [isDrag, setIsDrag] = useState(false);
   const [startY, setStartY] = useState();
+  const [scrollY, setScrollY] = useState();
 
   if (noteLs.length === 0) {
     return <span>Loading...</span>;
   }
 
   const onDragStart = ((e)=>{
-    console.log("onDragStart")
-    console.log(scrollRef.current.scrollTop)
     e.preventDefault();
     setIsDrag(true);
     setStartY(e.pageY + scrollRef.current.scrollTop);
+    setScrollY(scrollRef.current.scrollTop);
   })
 
   const onDragEnd = (() => {
     setIsDrag(false);
   })
 
-  const onDragMove = ((e) => {
+  const onDragMove = (e) => {
     if (isDrag) {
         scrollRef.current.scrollTop = startY - e.pageY;
     }
-  })
+  };
+
 
   const delay = 10;
   const throttle = (func, ms) => {
@@ -79,7 +81,14 @@ export default function NoteContent() {
   
     const onThrottleDragMove = throttle(onDragMove, delay);
 
+    const noteOnClick = (note) => {
+        if(scrollY === scrollRef.current.scrollTop){
+            navigate(`/create`, { state: { noteInfo: note } })
+        }
+    }
+
   return (
+    <div>
     <Notecontainer ref={scrollRef}
     onMouseDown={onDragStart}
     onMouseMove={onThrottleDragMove}
@@ -87,18 +96,12 @@ export default function NoteContent() {
     onMouseLeave={onDragEnd}
     >
       {noteLs.map((note) => (
-        <NoteBox
-          key={note.id}
-          onClick={() => {
-            if(!isDrag){
-                navigate(`/create`, { state: { noteInfo: note } })
-            }
-          }}
-        >
+        <NoteBox key={note.id} onClick={() => {noteOnClick(note)}}>
           <h2 className="noteTitle">{note.title}</h2>
           <p className="noteContent">{note.content}</p>
         </NoteBox>
       ))}
     </Notecontainer>
+    </div>
   );
 }
