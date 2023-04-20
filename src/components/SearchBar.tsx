@@ -13,10 +13,14 @@ const SearchSel = styled.select`
 `
 
 export default function SearchBar(){
+    const oninputEvent = (e : React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value);
+    }
+
     const selectList = ["최근생성순", "최근수정순"]
     return(
         <div>
-            <SearchBarInput placeholder="search"></SearchBarInput>
+            <SearchBarInput placeholder="search" onChange={oninputEvent}></SearchBarInput>
             <SearchSel>
                 {selectList.map((data, index)=>(
                     <option key={index}>{data}</option>

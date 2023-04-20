@@ -1,49 +1,18 @@
 {
   "notes": [
     {
-      "id": 1,
-      "title": "노트 이름12",
-      "content": "노트 내용18"
+      "title": "테스트 내용",
+      "content": "테스트 글입니다.",
+      "createDate": "2023. 4. 20. 오후 11:57:17",
+      "editDate": null,
+      "id": 1
     },
     {
-      "title": "노트테스트 제목",
-      "content": "노트 내용~",
-      "id": 7
-    },
-    {
-      "title": "test123",
-      "content": "test345",
-      "id": 9
-    },
-    {
-      "title": "test34",
-      "content": "twet",
-      "id": 10
-    },
-    {
-      "title": "wer",
-      "content": "werwet",
-      "id": 11
-    },
-    {
-      "title": "twert",
-      "content": "wert",
-      "id": 12
-    },
-    {
-      "title": "qwewaed",
-      "content": "asdasd",
-      "id": 13
-    },
-    {
-      "title": "esdfsdf",
-      "content": "sdfsdf",
-      "id": 14
-    },
-    {
-      "title": "test213",
-      "content": "qweqwe",
-      "id": 15
+      "title": "react 요약집",
+      "content": "- ref란?",
+      "createDate": "2023. 4. 20. 오후 11:58:14",
+      "editDate": "2023. 4. 20. 오후 11:58:38",
+      "id": 2
     }
   ]
 }

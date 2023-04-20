@@ -50,7 +50,7 @@ export default function NoteContent() {
   const [scrollY, setScrollY] = useState<number>();
 
   if (noteLs.length === 0) {
-    return <span>Loading...</span>;
+    return <p style={{margin:"50px"}}><span>None Data...</span></p>;
   }
 
   const onDragStart = (e : React.MouseEvent<HTMLDivElement, MouseEvent>)=>{

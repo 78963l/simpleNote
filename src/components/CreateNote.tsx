@@ -85,6 +85,8 @@ export default function CreateNote() {
       return false;
     }
 
+    const createDate = new Date();
+
     if (state === "create") {
       fetch(`http://localhost:3001/notes`, {
         method: "POST",
@@ -94,6 +96,8 @@ export default function CreateNote() {
         body: JSON.stringify({
           title: curTitle,
           content: curContent,
+          createDate: createDate.toLocaleString(),
+          editDate: null,
         }),
       }).then((res) => {
         if (res.ok) {
@@ -111,6 +115,8 @@ export default function CreateNote() {
           ...location.state.noteInfo,
           title: curTitle,
           content: curContent,
+          ...createDate,
+          editDate: createDate.toLocaleString(),
         }),
       }).then((res) => {
         if (res.ok) {
