@@ -2,33 +2,13 @@
   "notes": [
     {
       "id": 1,
-      "title": "노트 이름1",
-      "content": "노트 내용1"
+      "title": "노트 이름12",
+      "content": "노트 내용18"
     },
     {
-      "id": 2,
-      "title": "노트 이름2",
-      "content": "노트 내용2"
-    },
-    {
-      "title": "tes",
-      "content": "test1",
-      "id": 3
-    },
-    {
-      "title": "tes33",
-      "content": "test133",
-      "id": 4
-    },
-    {
-      "title": "test2",
-      "content": "test content",
-      "id": 5
-    },
-    {
-      "title": "test3",
-      "content": "qweqwe",
-      "id": 6
+      "title": "노트테스트 제목",
+      "content": "노트 내용~",
+      "id": 7
     }
   ]
 }
