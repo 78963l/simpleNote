@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import useFetch from "../hooks/useFetch";
+import moment from 'moment';
+import 'moment/locale/ko';
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from 'react';
 
@@ -39,6 +41,8 @@ interface Notes {
   id: number,
   title: string,
   content: string,
+  createDate : string,
+  editDate : string,
 }
 
 export default function NoteContent() {
@@ -111,7 +115,11 @@ export default function NoteContent() {
       {noteLs.map((note) => (
         <NoteBox key={note.id} onClick={() => {noteOnClick(note)}}>
           <h2 className="noteTitle">{note.title}</h2>
-          <p className="noteContent">{note.content}</p>
+          <div className='noteDate'>{ 
+          note.editDate === null
+          ? <p> {moment(note.createDate, 'YYYY-MM-DD HH:mm:ss').fromNow()} 생성했어요.</p>
+          : <p> {moment(note.editDate, 'YYYY-MM-DD HH:mm:ss').fromNow()} 수정했어요.</p>}
+          </div>
         </NoteBox>
       ))}
     </Notecontainer>

@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 
 import ToastMsg from './../components/ToastMsg';
-
+import moment from 'moment';
+import 'moment/locale/ko';
 
 const Container = styled.div`
   width: 250px;
@@ -82,7 +83,7 @@ export default function EditPage() {
       return false;
     }
 
-    const createDate = new Date();
+    const timeStamp = moment().format('YYYY-MM-DD HH:mm:ss');
 
     if (state === "create") {
       fetch(`http://localhost:3001/notes`, {
@@ -93,7 +94,7 @@ export default function EditPage() {
         body: JSON.stringify({
           title: curTitle,
           content: curContent,
-          createDate: createDate.toLocaleString(),
+          createDate: timeStamp,
           editDate: null,
         }),
       }).then((res) => {
@@ -112,8 +113,7 @@ export default function EditPage() {
           ...location.state.noteInfo,
           title: curTitle,
           content: curContent,
-          ...createDate,
-          editDate: createDate.toLocaleString(),
+          editDate: timeStamp,
         }),
       }).then((res) => {
         if (res.ok) {
