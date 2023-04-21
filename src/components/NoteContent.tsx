@@ -37,7 +37,7 @@ const NoteBox = styled.div`
   }
 `;
 
-interface Notes {
+export interface Notes {
   id: number,
   title: string,
   content: string,
@@ -45,8 +45,8 @@ interface Notes {
   editDate : string,
 }
 
-export default function NoteContent() {
-  const noteLs : Notes[] = useFetch("http://localhost:3001/notes");
+export default function NoteContent(props: any) {
+  const noteLs : Notes[] = props.noteLs;
   const navigate = useNavigate();
   const scrollRef = useRef<HTMLInputElement>(null);
   const [isDrag, setIsDrag] = useState(false);
