@@ -4,7 +4,6 @@ import NoteContent, { Notes } from "../components/NoteContent";
 import { useRef, useState } from 'react';
 import useFetch from './../hooks/useFetch';
 import { useEffect } from 'react';
-import { async } from 'q';
 
 const SearchBarInput = styled.input`
     width: 200px;
@@ -55,7 +54,6 @@ export default function InitPage(){
         }
         setNoteLs(sortNoteLs);
     }
-    
 
     const searchChange = (e : React.ChangeEvent<HTMLSelectElement>) => {
         searchKind.current = e.target.value;
@@ -65,14 +63,17 @@ export default function InitPage(){
     const oninputEvent = (e : React.ChangeEvent<HTMLInputElement>) => {
         const searchValue = e.target.value;
         if (searchValue){
-            const copy =[...noteLs]
-            const res = copy.filter((item) => {
-                if(item.title.toUpperCase().includes(searchValue.toUpperCase())) {
+            let sortNoteLs : Notes[] = ([]);
+            const copy =[...getNoteLs];
+            sortNoteLs = copy.filter((item) => {
+                if(item.title.includes(searchValue)) {
                     return item
                 }
-            });
-            setNoteLs(res);
-        } else{
+            })
+            if(sortNoteLs){
+                setNoteLs(sortNoteLs);
+            }
+        }else{
             setNoteLs(getNoteLs);
         }
     }
