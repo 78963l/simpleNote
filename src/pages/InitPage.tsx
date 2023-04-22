@@ -28,7 +28,7 @@ export default function InitPage(){
 
     useEffect(()=>{
         setNoteLs(getNoteLs)
-    }, [getNoteLs, noteLs]);
+    }, [getNoteLs]);
 
 
     const noteLsChange = () => {
@@ -75,9 +75,9 @@ export default function InitPage(){
             });
             setNoteLs(res);
         } else{
-            setNoteLs(noteLs);
+            setNoteLs(getNoteLs);
         }
-    }    
+    }
 
     return(
         <div>
