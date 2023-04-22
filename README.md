@@ -10,8 +10,7 @@
 - react
 
 ### install
-- npm install --save --legacy-peer-deps
-- npm install -g json-server
+- yarn install
 
 ### execute
 - json-server --watch ./src/db/data.json --port 3001
