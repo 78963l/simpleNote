@@ -4,6 +4,7 @@ import NoteContent, { Notes } from "../components/NoteContent";
 import { useRef, useState } from 'react';
 import useFetch from './../hooks/useFetch';
 import { useEffect } from 'react';
+import { async } from 'q';
 
 const SearchBarInput = styled.input`
     width: 200px;
@@ -23,39 +24,36 @@ export default function InitPage(){
     const searchKinds = ["최근생성순", "최근수정순"]
     const searchKind = useRef<string>('');
     const [noteLs, setNoteLs] = useState<Notes[]>([]);
-    const [searchTxt, setSearchTxt] = useState<string>('');
     const getNoteLs : Notes[] = useFetch("http://localhost:3001/notes");
 
     useEffect(()=>{
-        setNoteLs(getNoteLs)
+        setNoteLs(getNoteLs);
     }, [getNoteLs]);
 
+    useEffect(()=>{
+    }, [noteLs]);
 
     const noteLsChange = () => {
-        let copy = [...noteLs];
-        console.log("noteLsChange")
-        console.log(searchKind)
+        const copy = [...noteLs];
+        let sortNoteLs = copy;
         if (searchKind.current === searchKinds[0]){
-            const sortNoteLs = copy.sort((a, b) => {
+            sortNoteLs = copy.sort((a, b) => {
                 if (a.createDate > b.createDate){
                     return 1
                 }else{
                     return -1
                 }
             })
-            console.log(sortNoteLs)
-            setNoteLs(sortNoteLs);
         } else if (searchKind.current === searchKinds[1]){
-            const sortNoteLs = noteLs.sort((a, b) => {
+            sortNoteLs = copy.sort((a, b) => {
                 if (a.editDate > b.editDate){
                     return 1
                 }else{
                     return -1
                 }
             })
-            console.log(sortNoteLs);
-            setNoteLs(sortNoteLs);
         }
+        setNoteLs(sortNoteLs);
     }
     
 
