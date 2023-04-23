@@ -12,7 +12,8 @@ function createWindow () {
       nodeIntegration: true,
       contextIsolation : false
     } 
-  }) 
+  })
+  win.setMenu(null);
   win.loadURL("http://127.0.0.1:3000")
 } 
 app.whenReady().then(() => { 
