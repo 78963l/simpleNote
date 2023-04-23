@@ -80,7 +80,7 @@ export default function InitPage(){
 
     return(
         <div>
-            <SearchBarInput placeholder="search" onChange={oninputEvent}></SearchBarInput>
+            <SearchBarInput placeholder="검색" onChange={oninputEvent}></SearchBarInput>
             <SearchSel onChange={searchChange}>
                 {searchKinds.map((data, index)=>(
                     <option key={index}>{data}</option>
@@ -89,7 +89,7 @@ export default function InitPage(){
             <div>
                 <NoteContent noteLs={noteLs}/>
                 <p style={{textAlign:"end"}}>
-                <button style={{textAlign:"end"}} onClick={() => navigate('/edit')}>Create</button>
+                <button onClick={() => navigate('/edit')}>새 노트</button>
                 </p>
             </div>
         </div>

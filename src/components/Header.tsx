@@ -25,8 +25,11 @@ export interface ITitle{
 
 export default function Header({props : p} : Iprops){
     return(
-        <div>
+        <div style={{marginTop:20}}>
             <header style={{textAlign:"start"}}>
+                <div>
+                    <input type="range" min="1" max="100" value="50" />
+                </div>
                 <TitleTxt><a href="/">{p.title}</a></TitleTxt>
                 <SubTxt><a>{p.sub}</a></SubTxt>
             </header>

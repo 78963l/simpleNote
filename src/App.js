@@ -12,7 +12,7 @@ function App() {
     <>
       <div style={{display:"flex", justifyContent:"center"}}>
         <GlobalStyle />
-        <div style={{width:310, outline: "dashed 1px black"}}>
+        <div style={{width:310}}>
         <Header props={headerProps}/>
         <BrowserRouter>
           <Routes>

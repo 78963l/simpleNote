@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'moment/locale/ko';
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from 'react';
+import txtSize from "../styles/txtSize";
 
 const Notecontainer = styled.div`
     height: 350px;
@@ -31,8 +32,8 @@ const NoteBox = styled.div`
     padding: 5px;
   }
 
-  .noteContent {
-    font-size: medium;
+  .noteDate {
+    font-size: ${txtSize.small};
     padding: 5px;
   }
 `;

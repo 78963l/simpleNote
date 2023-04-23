@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require('electron') 
-const path = require('path') 
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 // set env
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
@@ -7,11 +7,14 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 function createWindow () { 
   const win = new BrowserWindow({ 
     width: 400, 
-    height: 600, 
+    height: 600,
+    transparent: true,
+    frame: false,
+    resizable:false,
     webPreferences: { 
       nodeIntegration: true,
-      contextIsolation : false
-    } 
+      contextIsolation : false,
+    }
   })
   //win.setMenu(null);
   win.loadURL("http://127.0.0.1:3000")
