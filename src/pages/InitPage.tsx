@@ -88,7 +88,9 @@ export default function InitPage(){
             </SearchSel>
             <div>
                 <NoteContent noteLs={noteLs}/>
-                <button onClick={() => navigate('/edit')}>Create</button>
+                <p style={{textAlign:"end"}}>
+                <button style={{textAlign:"end"}} onClick={() => navigate('/edit')}>Create</button>
+                </p>
             </div>
         </div>
     )

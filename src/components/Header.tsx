@@ -8,9 +8,9 @@ const TitleTxt = styled.h1`
     margin-bottom: 20px;
 `
 
-const SubTxt = styled.h2`
+const SubTxt = styled.h3`
     font-weight: 400;
-    font-size: ${txtSize.medium};
+    font-size: ${txtSize.small};
     margin-bottom: 12px;
 `
 
@@ -26,7 +26,7 @@ export interface ITitle{
 export default function Header({props : p} : Iprops){
     return(
         <div>
-            <header>
+            <header style={{textAlign:"start"}}>
                 <TitleTxt><a href="/">{p.title}</a></TitleTxt>
                 <SubTxt><a>{p.sub}</a></SubTxt>
             </header>

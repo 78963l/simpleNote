@@ -10,8 +10,9 @@ function App() {
   const headerProps = {title:"Simple Note", sub:"test"};
   return (
     <>
-      <div className="App">
+      <div style={{display:"flex", justifyContent:"center"}}>
         <GlobalStyle />
+        <div style={{width:310, outline: "dashed 1px black"}}>
         <Header props={headerProps}/>
         <BrowserRouter>
           <Routes>
@@ -20,6 +21,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         <ToastContainer/>
+        </div>
       </div>
     </>
   );

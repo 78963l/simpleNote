@@ -6,14 +6,10 @@ ${Reset}
 * {
     box-sizing: border-box;
   }
-.html{
+html{
   background-position: center;
-}
-`
-
-const test = createGlobalStyle`
-*{
-  background-po..
+  text-align: center;
+  display:"inline";
 }
 `
 

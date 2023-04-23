@@ -7,7 +7,6 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 const Container = styled.div`
-  width: 250px;
   justify-content: center;
   display: flex;
   margin: 0 auto;
